@@ -1,0 +1,9 @@
+img {
+    height: 120px;
+    width: 120px;
+    border-radius: 100px;
+    box-shadow: 1px 1px 1px black, 0 0 10px darkgrey, 0 0 12px gray;
+    position: relative;
+    left: 500px;
+    bottom: 75px;
+}

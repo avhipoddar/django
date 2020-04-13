@@ -1,0 +1,45 @@
+{% extends 'img_app/base.html' %}
+    {% block head_block%}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    {% endblock %}
+    {% block body_block %}
+        <div class="container">
+            <div class="jumbotron">
+                {% if registered %}
+                    <h1>Thanks For Registering</h1>
+            
+                {% else %}
+                    <h1>Register Here</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
+                        <img src="" alt="couldnt load image"/>
+                        <input type="submit" value="Register">
+                    </form>
+                {% endif %}
+
+            </div>
+        </div>
+        <script>
+            var my_input = document.getElementsByTagName('input')[5]
+            
+            my_input.addEventListener("change",function previewFile() {
+            var preview = document.querySelector('img');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+            })
+        </script>
+
+    {% endblock %}
